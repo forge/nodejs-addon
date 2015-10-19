@@ -1,0 +1,8 @@
+org.jboss.forge.addon.nodejs.facet.NodeJSDependencyFacet
+org.jboss.forge.addon.nodejs.facet.NodeJSFacet
+org.jboss.forge.addon.nodejs.facet.NodeJSMetadataFacet
+org.jboss.forge.addon.nodejs.facet.NodeJSPackagingFacet
+org.jboss.forge.addon.nodejs.project.NodeJSBuildSystem
+org.jboss.forge.addon.nodejs.project.NodeJSProjectType
+org.jboss.forge.addon.nodejs.resource.NodeJSModelResourceGenerator
+org.jboss.forge.addon.nodejs.ui.NodeJSExpressWizardStep
