@@ -1,4 +1,4 @@
-== nodejs-addon
+== NodeJS Forge addon
 :idprefix: id_ 
 
 image:https://travis-ci.org/forge/nodejs-addon.svg?branch=master["Build Status", link="https://travis-ci.org/forge/nodejs-addon"]
@@ -34,8 +34,8 @@ To use this addon, you must add it as a dependency in the *pom.xml* of your `for
 [source,xml]
 ----
 <dependency>
-   <groupId>org.jboss.forge.addon.nodejs</groupId>
-   <artifactId>nodejs-addon</artifactId>
+   <groupId>org.jboss.forge.addon</groupId>
+   <artifactId>nodejs</artifactId>
    <classifier>forge-addon</classifier>
    <version>${version}</version>
 </dependency>
