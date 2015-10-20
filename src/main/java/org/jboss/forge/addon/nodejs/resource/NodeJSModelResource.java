@@ -20,6 +20,8 @@ import javax.json.JsonObject;
 import javax.json.JsonReader;
 import javax.json.JsonStructure;
 import javax.json.JsonWriter;
+import javax.json.JsonWriterFactory;
+import javax.json.stream.JsonGenerator;
 
 import org.jboss.forge.addon.parser.json.resource.JsonResource;
 import org.jboss.forge.addon.resource.AbstractFileResource;
@@ -124,8 +126,10 @@ public class NodeJSModelResource extends AbstractFileResource<JsonResource> impl
             }
          }
 
+         JsonWriterFactory writerFactory = Json
+                  .createWriterFactory(Collections.singletonMap(JsonGenerator.PRETTY_PRINTING, true));
          try (OutputStream out = getFileOperations().createOutputStream(getUnderlyingResourceObject());
-                  JsonWriter writer = Json.createWriter(out))
+                  JsonWriter writer = writerFactory.createWriter(out))
          {
             writer.write(structure);
          }
