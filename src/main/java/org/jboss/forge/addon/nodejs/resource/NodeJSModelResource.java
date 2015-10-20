@@ -13,12 +13,15 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map.Entry;
 
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
 import javax.json.JsonReader;
 import javax.json.JsonStructure;
+import javax.json.JsonValue;
 import javax.json.JsonWriter;
 import javax.json.JsonWriterFactory;
 import javax.json.stream.JsonGenerator;
@@ -89,6 +92,17 @@ public class NodeJSModelResource extends AbstractFileResource<JsonResource> impl
       {
          throw new ResourceException("Error while getting the Json object", e);
       }
+   }
+
+   public JsonObjectBuilder getJsonObjectBuilder()
+   {
+      JsonObjectBuilder job = Json.createObjectBuilder();
+      JsonObject jsonObject = getJsonObject();
+      for (Entry<String, JsonValue> entry : jsonObject.entrySet())
+      {
+         job.add(entry.getKey(), entry.getValue());
+      }
+      return job;
    }
 
    @Override

@@ -9,9 +9,13 @@ package org.jboss.forge.addon.nodejs.facet;
 
 import java.util.Map;
 
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
+
 import org.jboss.forge.addon.dependencies.Dependency;
 import org.jboss.forge.addon.facets.constraints.FacetConstraint;
 import org.jboss.forge.addon.nodejs.project.NodeJSBuildSystem;
+import org.jboss.forge.addon.nodejs.resource.NodeJSModelResource;
 import org.jboss.forge.addon.projects.ProjectProvider;
 import org.jboss.forge.addon.projects.facets.AbstractProjectFacet;
 import org.jboss.forge.addon.projects.facets.MetadataFacet;
@@ -45,13 +49,20 @@ public class NodeJSMetadataFacet extends AbstractProjectFacet implements Metadat
    @Override
    public String getProjectName()
    {
-      return null;
+      NodeJSFacet nodeJS = getFaceted().getFacet(NodeJSFacet.class);
+      JsonObject jsonObject = nodeJS.getModelResource().getJsonObject();
+      return jsonObject.getString("name");
    }
 
    @Override
    public MetadataFacet setProjectName(String name)
    {
-      return null;
+      NodeJSFacet nodeJS = getFaceted().getFacet(NodeJSFacet.class);
+      NodeJSModelResource modelResource = nodeJS.getModelResource();
+      JsonObjectBuilder job = modelResource.getJsonObjectBuilder();
+      job.add("name", name);
+      modelResource.setContents(job.build());
+      return this;
    }
 
    @Override
@@ -69,13 +80,20 @@ public class NodeJSMetadataFacet extends AbstractProjectFacet implements Metadat
    @Override
    public String getProjectVersion()
    {
-      return null;
+      NodeJSFacet nodeJS = getFaceted().getFacet(NodeJSFacet.class);
+      JsonObject jsonObject = nodeJS.getModelResource().getJsonObject();
+      return jsonObject.getString("version");
    }
 
    @Override
    public MetadataFacet setProjectVersion(String version)
    {
-      return null;
+      NodeJSFacet nodeJS = getFaceted().getFacet(NodeJSFacet.class);
+      NodeJSModelResource modelResource = nodeJS.getModelResource();
+      JsonObjectBuilder job = modelResource.getJsonObjectBuilder();
+      job.add("version", version);
+      modelResource.setContents(job.build());
+      return this;
    }
 
    @Override
@@ -84,16 +102,22 @@ public class NodeJSMetadataFacet extends AbstractProjectFacet implements Metadat
       return null;
    }
 
+   @SuppressWarnings({ "rawtypes", "unchecked" })
    @Override
    public Map<String, String> getEffectiveProperties()
    {
-      return null;
+      NodeJSFacet nodeJS = getFaceted().getFacet(NodeJSFacet.class);
+      Map jsonObject = nodeJS.getModelResource().getJsonObject();
+      return jsonObject;
    }
 
+   @SuppressWarnings({ "rawtypes", "unchecked" })
    @Override
    public Map<String, String> getDirectProperties()
    {
-      return null;
+      NodeJSFacet nodeJS = getFaceted().getFacet(NodeJSFacet.class);
+      Map jsonObject = nodeJS.getModelResource().getJsonObject();
+      return jsonObject;
    }
 
    @Override
@@ -123,7 +147,7 @@ public class NodeJSMetadataFacet extends AbstractProjectFacet implements Metadat
    @Override
    public boolean isValid()
    {
-      return false;
+      return true;
    }
 
    @Override
