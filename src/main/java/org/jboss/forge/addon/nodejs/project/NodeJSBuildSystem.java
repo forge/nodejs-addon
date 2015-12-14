@@ -15,8 +15,8 @@ import org.jboss.forge.addon.facets.FacetFactory;
 import org.jboss.forge.addon.nodejs.facet.NodeJSFacet;
 import org.jboss.forge.addon.nodejs.facet.NodeJSMetadataFacet;
 import org.jboss.forge.addon.nodejs.facet.NodeJSPackagingFacet;
+import org.jboss.forge.addon.projects.AbstractProjectProvider;
 import org.jboss.forge.addon.projects.Project;
-import org.jboss.forge.addon.projects.ProjectProvider;
 import org.jboss.forge.addon.projects.ProvidedProjectFacet;
 import org.jboss.forge.addon.resource.Resource;
 import org.jboss.forge.furnace.container.simple.lifecycle.SimpleContainer;
@@ -26,7 +26,7 @@ import org.jboss.forge.furnace.container.simple.lifecycle.SimpleContainer;
  * 
  * @author <a href="mailto:ggastald@redhat.com">George Gastaldi</a>
  */
-public class NodeJSBuildSystem implements ProjectProvider
+public class NodeJSBuildSystem extends AbstractProjectProvider
 {
    @Override
    public String getType()
@@ -81,5 +81,4 @@ public class NodeJSBuildSystem implements ProjectProvider
    {
       return Integer.MAX_VALUE;
    }
-
 }
